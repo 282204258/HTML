@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+    .tb{
+	width: 1000px;
+	height: 50px;
+	margin: 0 auto;
+}
+.tb>ul>li{
+	width: 100px;
+	height: 50px;
+	float: left;
+	line-height: 50px;
+}
+.tb>ul>li:nth-of-type(2){
+	width: 200px;
+	height: 50px;
+	text-align: right;
+}
+.tb>ul>li:nth-of-type(3){
+	width: 220px;
+	height: 50px;
+	text-align: right;
+}
+.tb>ul>li:nth-of-type(4){
+	width: 160px;
+	height: 50px;
+	text-align: right;
+}
+.tb>ul>li:nth-of-type(5){
+	width: 85px;
+	height: 50px;
+	text-align: right;
+}
+.tb>ul>li:nth-of-type(6){
+	width: 110px;
+	height: 50px;
+	text-align: right;
+}
+.tb>ul>li:nth-of-type(7){
+	width: 95px;
+	height: 50px;
+	text-align: right;
+}
+.div0{
+	width: 100%;
+}
+.div1{
+	width: 1000px;
+	margin: 20px auto;
+}
+.div1>div{
+	width: 1000px;
+	border: 0.5px solid gray;
+	margin-top: 10px;
+	cursor: pointer;
+}
+.div1 li{
+	height: 100px;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: nowrap;
+	margin-top: 20px;
+	border-bottom: 0.5px solid gray;
+	cursor: pointer;
+}
+.div1 li>img{
+	width: 80px;
+	height: 80px;
+	margin: 0 5px;
+	cursor: pointer;
+}
+.div1 .xzk{
+	margin-left: 10px;
+	cursor: pointer;
+}
+.div1 .jiesao{
+	width: 250px;
+	cursor: pointer;
+	
+}
+.div1 .jiesao:hover{
+	text-decoration: underline;
+}
+.div1 .guige{
+	width: 200px;
+	color: #90908E;
+	cursor: pointer;
+}
+.div1 .jiage{
+	width: 50px;
+	cursor: pointer;
+}
+.div1 .jiajian1{
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+.div1 .jiajian2{
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+.div1 .shuliang{
+	width: 30px;
+	height: 20px;
+	text-align: center;
+	cursor: pointer;
+}
+.div1 .zongjia{
+	width: 100px;
+	text-align: center;
+	color: red;
+	font-weight: bold;
+	cursor: pointer;
+}
+.div1 .yichu{
+	font-weight: bold;
+	cursor: pointer;
+}
+.div1 .yichu:hover{
+	text-decoration: underline;
+	color: blue;
+}
+.db{
+	width: 1002px;
+	height: 50px;
+	margin: 0 auto;
+	background: #BFBFB9;
+	
+}
+.jsuan{
+	float: right;
+	width: 150px;
+	height: 50px;
+	background: #292A24;
+	font-size: 30px;
+	font-weight: bold;
+	color: #FAFAF7;
+	text-align: center;
+	line-height: 50px;
+}
+.jsuan:hover{
+	background: #FF4D0C;
+	cursor: pointer;
+}
+.shopzongjia{
+	float: right;
+	margin-right: 50px;
+	font-size: 20px;
+	line-height: 50px;
+}
+.shopshu{
+	float: right;
+	margin-right: 20px;
+	font-size: 20px;
+	line-height: 50px;
+}
+#shopzj{
+	color: #FF4D0C;
+}
+#shopsl{
+	color: #FF4D0C;
+	margin: 0 10px;
+}
+	</style>
+	<link rel="stylesheet" type="text/css" href="css/div.css">
+	<!-- <script type="text/javascript" src="js/json.js"></script> -->
+
+</head>
+<body>
+<div class="tb">
+		<ul>
+			<li>
+				<input type="checkbox" name="tbxuanze">
+				<span>全选</span>
+			</li>
+			<li>商品信息</li>
+			<li>商品参数</li>
+			<li>单价</li>
+			<li>数量</li>
+			<li>金额</li>
+			<li>操作</li>
+		</ul>
+	</div>
+	<div class="div0">
+	</div>
+	<div class="db">
+		<div class="jsuan">
+			<span>结算</span>
+		</div>
+		<div class="shopzongjia">
+			共计：<span id="shopzj">0.00</span>
+		</div>
+		<div class="shopshu"> 
+			<span>已选商品</span><span id="shopsl">0</span><span>件</span>
+		</div>	
+	</div>
+</body>
+<script type="text/javascript">
+var json=[
+    //  两个店铺
+    {
+        "shopname": "京东自营",
+        "shopID": 101,
+        // 商品
+        "goods": [
+            {
+                "checked": false,
+                "goodName": "三星 Galaxy A8s（SM-G8870） 黑瞳全视屏 6GB+128GB 外星银 全网通4G 双卡双待",
+                "goodID": 1001,
+                "price": 1258,
+                "num": 1,
+                "src":"https://img12.360buyimg.com/n7/jfs/t1/26719/27/1139/321364/5c0f7d2dE26654912/9d2b78523e1bada3.jpg"
+            }, {
+                "checked": false,
+                "goodName": "Apple iPhone X (A1865) 64GB 深空灰色 移动联通电信4G",
+                "goodID": 1002,
+                "price": 9588,
+                "num": 1,
+                "src":"https://img13.360buyimg.com/n7/jfs/t10675/253/1344769770/66891/92d54ca4/59df2e7fN86c99a27.jpg"
+            }
+        ]
+    },
+    {
+        "shopname": "京东非自营",
+        "shopID": 102,
+        // 商品
+        "goods": [
+            {
+                "checked": false,
+                "goodName": " 荣耀MagicBook 14英寸轻薄窄边框笔记本电脑（AMD锐龙5 8G 256G FHD IPS 正版Office）冰河银      ",
+                "goodID": 1003,
+                "price": 9999,
+                "num": 4,
+                "src":"https://img11.360buyimg.com/n7/jfs/t1/8764/35/4810/207189/5bdbf117E35599536/b3c83c8d840a4017.jpg"
+            }, {
+                "checked": false,
+                "goodName": " Apple MacBook Air 13.3英寸笔记本电脑 银色(2017款Core i5 处理器/8GB内存/128GB闪存 MQD32CH/A)      ",
+                "goodID": 1004,
+                "price": 15288,
+                "num": 10,
+                "src":"https://img11.360buyimg.com/n7/jfs/t14848/365/2076510540/93902/e5883831/5a6947e5N39e16ed8.jpg"
+            }
+        ]
+    },
+    {
+        "shopname": "淘宝旗舰店",
+        "shopID": 103,
+        // 商品
+        "goods": [
+            {
+                "goodID": 1007,
+                "checked": false,
+                "goodName": "法国原瓶进口红酒 奥瑞安雄狮干红葡萄酒 单瓶  750ml      ",
+                "price": 258,
+                "num":1,
+                "src":"https://img14.360buyimg.com/n7/jfs/t20320/316/1220830999/32913/4e1478d8/5b21e5d5Nf2360d0b.jpg"
+            }, {
+                "checked": false,
+                "goodName": "海飞丝洗发水套装去屑去油500ml*2+400ml送清爽去油200ml（持久清爽控油 男士女士通用）      ",
+                "goodID": 1005,
+                "price": 48,
+                "num": 1,
+                "src":"https://img14.360buyimg.com/n7/jfs/t1/6893/27/6871/296473/5be163d6E64230eff/8a6b0b1044407322.jpg"
+            },
+            {
+                "checked": false,
+                "goodName": "一叶子面膜 营润亮颜奢养礼盒30片 补水保湿黑面膜 去黑头 收缩毛孔 男女护肤品套装      ",
+                "goodID": 1006,
+                "price": 5.22,
+                "num": 5,
+                "src":"https://img13.360buyimg.com/n7/jfs/t1/28023/8/110/249489/5c073bd7Ec9c95668/49093d4df4564bd1.jpg"
+            }
+        ]
+    }
+
+]
+function cl(cl){
+		return document.getElementsByClassName(cl)[0];
+	}
+	var div0=cl('div0')
+	//创建商品
+	function cJshop(){
+		//遍历店铺个数，在创建店铺架构
+		for(var i=0;i<json.length;i++){
+			div0.innerHTML=div0.innerHTML+`<div class="div1" data-id=${json[i].shopID}>
+				<input type="checkbox" name="shopdPxZ"><span>店铺：${json[i].shopname}</span>
+				<div>
+					<ul>
+					</ul>
+				</div>
+			</div>`
+		}
+		//得到前面架构好的div1
+		var div1=div0.getElementsByClassName('div1');
+		//遍历div1
+		for(var i=0;i<div1.length;i++){
+			// console.log(json[i].goods.length)
+			//通过遍历的div1得到josn数据的下标值
+			for(var j=0;j<json[i].goods.length;j++){
+				//得到div1里面ul的集合
+				var ul=div1[i].getElementsByTagName('div')[0].getElementsByTagName('ul')[0];
+				//ul后面加li
+				ul.innerHTML=ul.innerHTML+`
+						<li data-id="${json[i].goods[j].goodID}">
+							<input type="checkbox" name="" class="xzk">
+							<img src="${json[i].goods[j].src}">
+							<p class="jiesao">${json[i].goods[j].goodName}</p>
+							<p class="guige">规格：默认<br>尺寸：16*16*3（cm）</p>
+							<p class="jiage">￥${json[i].goods[j].price}</p>
+							<div><input type="button" name="" value="-" class="jiajian1"><input type="text" name="" class="shuliang" value="${json[i].goods[j].num}"><input type="button" value="+" name=""  class="jiajian2"></div>
+							<p name="zongjia" class="zongjia">￥2980</p>
+							<p class="yichu">移除商品</p>
+						</li>
+					`
+			}
+		}
+	}
+	//点击全选框获取下面的input，并进行选择操作；
+	function Qxuanze(){
+		var shopxz;
+		var tbxZ=document.getElementsByName('tbxuanze')[0];
+		var shopdPxZ=document.getElementsByName('shopdPxZ');
+		//点击全选
+		tbxZ.onclick=function(){
+			var cc;
+			for(var i=0;i<shopdPxZ.length;i++){
+					shopdPxZ[i].checked=tbxZ.checked;
+					var shopxZ=shopdPxZ[i].parentNode.getElementsByClassName('xzk');
+					for(var j=0;j<shopxZ.length;j++){
+						shopxZ[j].checked=shopdPxZ[i].checked;
+					}
+			}
+			for(var i=0;i<json.length;i++){
+				if(json[i]!=""){
+					for(var j=0;j<json[i].goods.length;j++){
+						json[i].goods[j].checked=tbxZ.checked;
+					// console.log(json[i].goods[j].checked)
+					}
+				}else{
+					i=i;
+				}
+			}
+			jisuan();
+		}
+		//点击店铺前的选择，并判断是否全部选中
+		for(var i=0;i<shopdPxZ.length;i++){
+			shopdPxZ[i].index=i;
+			shopdPxZ[i].onclick=function(){
+				// console.log(json[this.index].shopID)
+				//点击后找商品，并让商品选择状态等于商铺选择状态
+				var shopxZ=shopdPxZ[this.index].parentNode.getElementsByClassName('xzk');
+				for(var k=0;k<shopxZ.length;k++){
+					shopxZ[k].checked=shopdPxZ[this.index].checked;
+				}
+				//判断店铺是否全选
+				var a=0;
+				for(var j=0;j<shopdPxZ.length;j++){
+					if(shopdPxZ[j].checked==true){
+						a++;
+					}
+				}
+				if(a==shopdPxZ.length){
+					tbxZ.checked=true;
+				}else{
+					tbxZ.checked=false;
+				}
+				var shopID=shopdPxZ[this.index].parentNode.getAttribute('data-id');
+				for(var j=0;j<json.length;j++){
+					if(json[j].shopID==shopID){
+						for(var k=0;k<json[j].goods.length;k++){
+							json[j].goods[k].checked=shopdPxZ[this.index].checked;
+						}
+					}
+				}
+				jisuan();
+			}
+		}
+	}
+	//商品状态控制店铺状态-控制全选状态
+	function Xxuanze(){
+		var xzk=document.getElementsByClassName('xzk');
+		for(var i=0;i<xzk.length;i++){
+		//点击商品事件
+			xzk[i].index=i;
+			xzk[i].onclick=function(){
+				//判断全部商品状态，控制店铺选择状态
+				var div1=this.parentNode.parentNode.parentNode.parentNode;		
+				var shopdp=div1.getElementsByTagName("input")[0];
+				var shopdPsP=this.parentNode.parentNode.parentNode.parentNode.getElementsByClassName('xzk');
+				for(var j=0;j<shopdPsP.length;j++){
+					if(shopdPsP[j].checked==false){
+						shopdp.checked=false;
+						break;
+					}else{
+						shopdp.checked=true;
+					}
+				}
+				//判断全部店铺状态，控制全选状态
+				var quanxun=document.getElementsByName('tbxuanze')[0];
+				var shopdP=document.getElementsByName('shopdPxZ');
+				for(var j=0;j<shopdP.length;j++){
+					if(shopdP[j].checked==false){
+						quanxun.checked=false;
+						break;
+					}else{
+						quanxun.checked=true;
+					}
+				}
+				//更改数据
+				var shopID=this.parentNode.parentNode.parentNode.parentNode.getAttribute('data-id');
+				var goodID=this.parentNode.getAttribute('data-id');
+				for(var j=0;j<json.length;j++){
+					if(json[j].shopID==shopID){
+						for(var k=0;k<json[j].goods.length;k++){
+								if(json[j].goods[k].goodID==goodID){
+								json[j].goods[k].checked=this.checked; 
+							}
+						}	
+					}
+				}
+			jisuan();
+			}	
+		}	
+	}
+	//已选商品的计算
+	function jisuan(){
+			var a=[];
+			var b=0;
+			var aa=[];
+			var bb=0;
+			var shopzongjia=document.getElementById('shopzj');
+			//已选商品数量计算，并把选择的数值加入到a数组
+				for(var j=0;j<json.length;j++){
+					if(json[j]==""){
+						j=j;
+					}else{
+						for(var k=0;k<json[j].goods.length;k++){
+							if(json[j].goods[k]==""){
+								k=k;
+							}else{
+								if(json[j].goods[k].checked==true){
+									a.push(json[j].goods[k].num);
+								}
+							}
+						}
+					}		
+				}		
+				//找到底部商品件数，并进行a数组累加求和赋值给底部已选商品
+				var shopsl=document.getElementById('shopsl');
+				for(var k=0;k<a.length;k++){
+					 b+=a[k];
+				}
+				shopsl.innerText=b;
+				//已选商品价格计算，并把选择的数值加入到aa数组。
+				for(var j=0;j<json.length;j++){
+					if(json[j]!=""){
+						for(var k=0;k<json[j].goods.length;k++){
+							if(json[j].goods[k]==""){
+								k=k;
+							}else{
+								if(json[j].goods[k].checked==true){
+								aa.push(json[j].goods[k].price);
+								}
+							}
+						}
+						}else{
+							j=j;
+						}		
+					}
+				//找到底部商品价格共计，并进行a数组和aa数组求积累加并赋值给底部已选商品价格共计
+			for(var j=0;j<a.length;j++){
+				bb+=a[j]*aa[j];
+			}
+			shopzongjia.innerText=((bb*100)/100);
+			for(var t=0;t<json.length;t++){
+				if(json[t]==""){
+					json.splice(t,1);
+				}else{
+					for(var tt=0;tt<json[t].goods.length;tt++){
+						if(json[t].goods[tt]==""){
+							json[t].goods.splice(tt,1);
+						}
+					}
+				}
+			}
+	}
+	//加减数量的实现
+	function jiajian(){
+		var jian=document.getElementsByClassName('jiajian1');
+		var shuzi=document.getElementsByClassName('shuliang');
+		var jia=document.getElementsByClassName('jiajian2');
+		// console.log(jian)
+		//点击减数量按钮
+		for(var i=0;i<jian.length;i++){
+			jian[i].index=i;
+			jian[i].onclick=function(){
+				var goodID=jian[this.index].parentNode.parentNode.getAttribute('data-id');
+				var shopID=jian[this.index].parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('data-id');
+				for(var j=0;j<json.length;j++){
+					if(json[j].shopID==shopID){
+						for(var k=0;k<json[j].goods.length;k++){
+							if (json[j].goods[k].goodID==goodID) {
+								if(json[j].goods[k].num==1){
+									json[j].goods[k].num=1;
+									shuzi[this.index].value=json[j].goods[k].num;
+								}else{
+									shuzi[this.index].value=--json[j].goods[k].num
+								}	
+							}
+						}
+					}
+				}
+				jisuan();
+				jine();
+			}
+		}
+		//点击加数量按钮
+		for(var i=0;i<jia.length;i++){
+			jia[i].index=i;
+			jia[i].onclick=function(){
+				var goodID=jia[this.index].parentNode.parentNode.getAttribute('data-id');
+				var shopID=jia[this.index].parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('data-id');
+				for(var j=0;j<json.length;j++){
+					if(json[j].shopID==shopID){
+						for(var k=0;k<json[j].goods.length;k++){
+							if (json[j].goods[k].goodID==goodID) {
+									shuzi[this.index].value=++json[j].goods[k].num
+							}
+						}
+					}
+				}
+				jisuan();
+				jine();
+			}
+		}
+	}
+	//单个商品金额计算总价s
+	function jine(){
+		var a=[];
+		var b=[];
+		var zongjia=document.getElementsByClassName('zongjia');
+		for(var i=0;i<zongjia.length;i++){
+			var goodID=zongjia[i].parentNode.getAttribute('data-id');
+			for(var j=0;j<json.length;j++){
+				for(var k=0;k<json[j].goods.length;k++){
+					if(json[j].goods[k].goodID==goodID){
+						a.push(json[j].goods[k].num);
+						b.push(json[j].goods[k].price);
+					}
+				}	
+			}
+		}
+		for(var i=0;i<a.length;i++){
+			zongjia[i].innerText="￥"+(((a[i]*b[i])*100)/100)
+		}
+	}
+	//删除操作
+	function shanchu(){
+		var yichu=document.getElementsByClassName('yichu');
+		for(var i=0;i<yichu.length;i++){
+			yichu[i].onclick=function(){
+				//找到点击当前行的li
+				var li=this.parentNode.parentNode.parentNode.getElementsByTagName('li')
+				//找到div0
+				var div0=this.parentNode.parentNode.parentNode.parentNode.parentNode;
+				//找到div1
+				var div1=this.parentNode.parentNode.parentNode.parentNode;
+				var shopID=div1.getAttribute('data-id')
+				var goodID=this.parentNode.getAttribute('data-id');
+				for(var k=0;k<json.length;k++){
+					if(json[k].shopID==shopID){
+						for(var s=0;s<json[k].goods.length;s++){
+							if(json[k].goods[s].goodID==goodID){
+								json[k].goods[s]="";
+							}
+						}
+					}
+				}
+				//点击事件触发删除li行为
+				this.parentNode.parentNode.removeChild(this.parentNode)
+				//判断当前div1下的li长度是否为0
+				if(li.length==0){
+					div0.removeChild(div1);
+					for(var r=0;r<json.length;r++){
+						if(json[r].shopID==shopID){
+							json[r]="";
+						}
+					}
+				}
+				jisuan();
+			}
+		}
+	}
+	cJshop();
+	Qxuanze();
+	Xxuanze();
+	jiajian();
+	jine();
+	shanchu();
+</script>
+</html>
